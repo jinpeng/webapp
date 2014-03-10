@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"github.com/axgle/pinyin"
 	"github.com/codegangsta/martini"
 	"github.com/codegangsta/martini-contrib/binding"
@@ -300,6 +301,7 @@ func main() {
 
 		//Example of server side error validation for the client side form
 		if ferr.Count() > 0 {
+			fmt.Println(ferr)
 			newmap := map[string]interface{}{"metatitle": "Registration", "errormessage": "Error with Form Submission"}
 			r.HTML(200, "register", newmap)
 		} else {
